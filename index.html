@@ -19,8 +19,12 @@
             margin-bottom: 20px;
         }
 
+        h3 {
+            margin-top: 25px;
+        }
+
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: auto;
         }
 
@@ -53,6 +57,7 @@
             background: rgba(255,255,255,0.08);
             border-radius: 12px;
             padding: 20px;
+            margin-bottom: 20px;
             display: none;
         }
 
@@ -83,8 +88,8 @@
     <h1>Bài học tiếng Anh</h1>
 
     <div class="buttons">
-        <button onclick="openLesson()">📘 Mở bài học</button>
-        <button onclick="showHint()">💡 Gợi ý đáp án</button>
+        <button onclick="openLesson()">Mở bài học</button>
+        <button onclick="showHint()">Gợi ý đáp án</button>
     </div>
 
     <!-- Bài học -->
@@ -94,7 +99,9 @@
 
     <!-- Gợi ý đáp án -->
     <div id="hintBox" class="box">
-        <h3>Gợi ý đáp án – Question 1</h3>
+
+        <!-- Question 1 -->
+        <h3>Question 1</h3>
         <p>
             In the future, our world is likely to change 
             <span class="copy" onclick="copyText('rapidly')">rapidly</span> 
@@ -112,6 +119,65 @@
             <span class="copy" onclick="copyText('addressing')">addressing</span> 
             these potential issues.
         </p>
+
+        <!-- Question 2 -->
+        <h3>Question 2</h3>
+        <p>
+            We are currently seeking a highly motivated individual to fill an exciting 
+            <span class="copy" onclick="copyText('vacancy')">vacancy</span> 
+            in our team. As a key member, you will be 
+            <span class="copy" onclick="copyText('employed')">employed</span> 
+            in a dynamic environment where your contributions will be highly valued. 
+            The role presents a 
+            <span class="copy" onclick="copyText('challenging')">challenging</span> 
+            opportunity for those looking to grow their skills and make a significant 
+            <span class="copy" onclick="copyText('impact')">impact</span>. 
+            Ideally, we are looking for candidates with a background in project management, 
+            <span class="copy" onclick="copyText('preferably')">preferably</span> 
+            with experience in a fast-paced industry. If you are ready to take on this 
+            <span class="copy" onclick="copyText('rewarding')">rewarding</span> 
+            role, we encourage you to apply today!
+        </p>
+
+        <!-- Question 3 -->
+        <h3>Question 3</h3>
+        <p>
+            We would like to express our deep 
+            <span class="copy" onclick="copyText('admiration')">admiration</span> 
+            for the dedication and hard work of all our team members. Our company thrives in a 
+            <span class="copy" onclick="copyText('diverse')">diverse</span> 
+            environment, where each individual's unique skills contribute to our collective success. 
+            We are proud to work with a partner who 
+            <span class="copy" onclick="copyText('specializes')">specializes</span> 
+            in cutting-edge technology solutions, helping us stay ahead of the curve. As we move forward, 
+            we 
+            <span class="copy" onclick="copyText('anxiously')">anxiously</span> 
+            await the exciting new opportunities that will emerge in the coming months. Together, 
+            we are poised to achieve great things and continue our journey of 
+            <span class="copy" onclick="copyText('growth')">growth</span> 
+            and innovation.
+        </p>
+
+        <!-- Question 4 -->
+        <h3>Question 4</h3>
+        <p>
+            This organization was established to help disadvantaged people.<br>
+            → This organization was set up 
+            <span class="copy" onclick="copyText('to help the disadvantaged')">
+                to help the disadvantaged
+            </span>.
+        </p>
+
+        <!-- Question 5 -->
+        <h3>Question 5</h3>
+        <p>
+            I have never seen such an interesting film before.<br>
+            → This is the most 
+            <span class="copy" onclick="copyText('interesting film I have ever seen')">
+                interesting film I have ever seen
+            </span>.
+        </p>
+
     </div>
 </div>
 
@@ -136,6 +202,11 @@
             alert("Đã sao chép: " + text);
         });
     }
+
+    // Mặc định mở gợi ý đáp án khi load trang
+    window.onload = function () {
+        showHint();
+    };
 </script>
 
 </body>
