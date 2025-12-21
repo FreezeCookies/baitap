@@ -1,265 +1,229 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Bài học tiếng Anh</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Bài học tiếng Anh – Gợi ý đáp án</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #0f172a, #020617);
-            color: #fff;
-            padding: 30px;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h3 {
-            margin-top: 25px;
-            color: #7dd3fc;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            padding: 12px 22px;
-            border: none;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            background: #38bdf8;
-            color: #000;
-            transition: 0.2s;
-        }
-
-        button:hover {
-            background: #0ea5e9;
-            transform: scale(1.05);
-        }
-
-        .box {
-            background: rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 12px;
-        }
-
-        .copy {
-            color: #38bdf8;
-            font-weight: bold;
-            cursor: pointer;
-            padding: 2px 6px;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
-
-        .copy:hover {
-            background: rgba(56,189,248,0.2);
-        }
-    </style>
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#0f172a,#020617);
+    color:#fff;
+    padding:30px;
+}
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+h1{text-align:center;margin-bottom:25px;}
+h3{color:#7dd3fc;margin-top:22px;}
+.box{
+    background:rgba(255,255,255,0.08);
+    border-radius:12px;
+    padding:22px;
+    margin-bottom:20px;
+}
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+button{
+    padding:12px 22px;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    background:#38bdf8;
+    color:#000;
+}
+button:hover{background:#0ea5e9;}
+.copy{
+    color:#38bdf8;
+    font-weight:bold;
+    cursor:pointer;
+}
+.copy:hover{text-decoration:underline;}
+iframe{
+    width:100%;
+    height:600px;
+    border:none;
+    border-radius:12px;
+}
+</style>
 </head>
+
 <body>
-
 <div class="container">
-    <h1>Bài học tiếng Anh</h1>
 
-    <div class="buttons">
-        <button onclick="openLesson()">Mở bài học</button>
-        <button onclick="showHint()">Gợi ý đáp án</button>
-    </div>
+<h1>Gợi ý đáp án – Bài tiếng Anh</h1>
 
-    <!-- Bài học -->
-    <div id="lessonBox" class="box" style="display:none;">
-        <iframe src="https://scorm.cohota.com/lti/scorm_files/13112"></iframe>
-    </div>
+<div class="buttons">
+    <button onclick="showHint()">💡 Gợi ý đáp án</button>
+    <button onclick="showLesson()">📘 Mở bài học</button>
+</div>
 
-    <!-- Gợi ý đáp án -->
-    <div id="hintBox" class="box">
+<!-- GỢI Ý -->
+<div id="hintBox" class="box">
 
-        <!-- Q1 -->
-        <h3>Question 1</h3>
-        <p>
-            In the future, our world is likely to change 
-            <span class="copy" onclick="copyText('rapidly')">rapidly</span>
-            as technology and 
-            <span class="copy" onclick="copyText('urbanization')">urbanization</span>
-            continue to shape society... 
-            <span class="copy" onclick="copyText('addressing')">addressing</span>
-            these potential issues.
-        </p>
+<h3>Question 1</h3>
+<p>
+In the future, our world is likely to change rapidly as technology and urban development continue to shape society.<br>
+→ (rapid) → <span class="copy" onclick="copyText('rapidly')">rapidly</span>
+</p>
+<p>
+They may also lead to challenges such as rising unemployment in industries replaced by automation.<br>
+→ (employ) → <span class="copy" onclick="copyText('unemployment')">unemployment</span>
+</p>
+<p>
+Life could become increasingly stressful for many people.<br>
+→ (stress) → <span class="copy" onclick="copyText('stressful')">stressful</span>
+</p>
+<p>
+With careful planning and innovative solutions, we can address potential issues.<br>
+→ (address) → <span class="copy" onclick="copyText('address')">address</span>
+</p>
 
-        <!-- Q2 -->
-        <h3>Question 2</h3>
-        <p>
-            <span class="copy" onclick="copyText('vacancy')">vacancy</span>,
-            <span class="copy" onclick="copyText('employed')">employed</span>,
-            <span class="copy" onclick="copyText('challenging')">challenging</span>,
-            <span class="copy" onclick="copyText('impact')">impact</span>,
-            <span class="copy" onclick="copyText('preferably')">preferably</span>,
-            <span class="copy" onclick="copyText('rewarding')">rewarding</span>
-        </p>
+<h3>Question 2</h3>
+<p>
+We are currently seeking a highly motivated individual to fill an exciting vacant role in our team.<br>
+→ (vacant) → <span class="copy" onclick="copyText('vacant')">vacant</span>
+</p>
+<p>
+As a key member, you will be employed in a dynamic environment.<br>
+→ (employ) → <span class="copy" onclick="copyText('employed')">employed</span>
+</p>
+<p>
+The role presents a challenging opportunity.<br>
+→ (challenge) → <span class="copy" onclick="copyText('challenging')">challenging</span>
+</p>
+<p>
+We prefer candidates with relevant experience.<br>
+→ (prefer) → <span class="copy" onclick="copyText('preferably')">preferably</span>
+</p>
+<p>
+If you are ready to take on this rewarding role, apply today!<br>
+→ (reward) → <span class="copy" onclick="copyText('rewarding')">rewarding</span>
+</p>
 
-        <!-- Q3 -->
-        <h3>Question 3</h3>
-        <p>
-            <span class="copy" onclick="copyText('admiration')">admiration</span>,
-            <span class="copy" onclick="copyText('diverse')">diverse</span>,
-            <span class="copy" onclick="copyText('specializes')">specializes</span>,
-            <span class="copy" onclick="copyText('anxiously')">anxiously</span>,
-            <span class="copy" onclick="copyText('growth')">growth</span>
-        </p>
+<h3>Question 3</h3>
+<p>
+We would like to express our deep admiration for the dedication of our team members.<br>
+→ (admire) → <span class="copy" onclick="copyText('admiration')">admiration</span>
+</p>
+<p>
+Our company thrives in a diverse environment.<br>
+→ (diversity) → <span class="copy" onclick="copyText('diverse')">diverse</span>
+</p>
+<p>
+We work with a partner who specializes in cutting-edge technology solutions.<br>
+→ (special) → <span class="copy" onclick="copyText('specializes')">specializes</span>
+</p>
+<p>
+As we move forward, we eagerly await new opportunities for growth and innovation.<br>
+→ (grow) → <span class="copy" onclick="copyText('growth')">growth</span>
+</p>
 
-        <!-- Q4 -->
-        <h3>Question 4</h3>
-        <p>
-            → set up 
-            <span class="copy" onclick="copyText('to help the disadvantaged')">
-            to help the disadvantaged</span>
-        </p>
+<h3>Question 4</h3>
+<p>
+This organization was established to help disadvantaged people.<br>
+→ This organization was set <span class="copy" onclick="copyText('up to help the disadvantaged')">up to help the disadvantaged</span>.
+</p>
 
-        <!-- Q5 -->
-        <h3>Question 5</h3>
-        <p>
-            → the most 
-            <span class="copy" onclick="copyText('interesting film I have ever seen')">
-            interesting film I have ever seen</span>
-        </p>
+<h3>Question 5</h3>
+<p>
+I have never seen such an interesting film before.<br>
+→ This is the most <span class="copy" onclick="copyText('interesting film I have ever seen')">interesting film I have ever seen</span>.
+</p>
 
-        <!-- Q6 -->
-        <h3>Question 6</h3>
-        <p>
-            → The more 
-            <span class="copy" onclick="copyText('work experience you get, the greater chance of employment you will have')">
-            work experience you get, the greater chance of employment you will have</span>
-        </p>
+<h3>Question 6</h3>
+<p>
+If you get more work experience, you will have a greater chance of employment.<br>
+→ The more <span class="copy" onclick="copyText('work experience you get, the greater chance of employment you will have')">work experience you get, the greater chance of employment you will have</span>.
+</p>
 
-        <!-- Q7 -->
-        <h3>Question 7</h3>
-        <p>
-            → which 
-            <span class="copy" onclick="copyText('is linked to biodiversity loss')">
-            is linked to biodiversity loss</span>
-        </p>
+<h3>Question 7</h3>
+<p>
+Air pollution levels have increased in many countries, which is linked to biodiversity loss.
+</p>
 
-        <!-- Q8 -->
-        <h3>Question 8</h3>
-        <p>
-            → The lazier 
-            <span class="copy" onclick="copyText('you are, the worse your grades will get')">
-            you are, the worse your grades will get</span>
-        </p>
+<h3>Question 8</h3>
+<p>
+If you are lazier, your grades will get worse.<br>
+→ The lazier <span class="copy" onclick="copyText('you are, the worse your grades will get')">you are, the worse your grades will get</span>.
+</p>
 
-        <!-- Q9 -->
-        <h3>Question 9</h3>
-        <p>
-            → The harder 
-            <span class="copy" onclick="copyText('we work, the sooner we can finish')">
-            we work, the sooner we can finish</span>
-        </p>
+<h3>Question 9</h3>
+<p>
+We work harder, so we can finish sooner.<br>
+→ The harder <span class="copy" onclick="copyText('we work, the sooner we can finish')">we work, the sooner we can finish</span>.
+</p>
 
-        <!-- Q10 -->
-        <h3>Question 10</h3>
-        <p>
-            → has not been seen since 
-            <span class="copy" onclick="copyText('he left the house')">
-            he left the house</span>
-        </p>
+<h3>Question 10</h3>
+<p>
+Mr. Smith was last seen when he left the house.<br>
+→ Mr. Smith has not been seen since <span class="copy" onclick="copyText('he left the house')">he left the house</span>.
+</p>
 
-        <!-- Q11 -->
-        <h3>Question 11</h3>
-        <p>
-            → look 
-            <span class="copy" onclick="copyText('for better job opportunities')">
-            for better job opportunities</span>
-        </p>
+<h3>Question 11</h3>
+<p>
+Today, young people from rural areas often move to big cities to look for better job opportunities.
+</p>
 
-        <!-- Q12 -->
-        <h3>Question 12</h3>
-        <p>
-            → This is the first time I 
-            <span class="copy" onclick="copyText('have been in Thailand')">
-            have been in Thailand</span>
-        </p>
+<h3>Question 12</h3>
+<p>
+I am in Thailand for the first time in my life.<br>
+→ This is the first time I <span class="copy" onclick="copyText('have been in Thailand')">have been in Thailand</span>.
+</p>
 
-        <!-- Q13 -->
-        <h3>Question 13</h3>
-        <p>
-            → The more 
-            <span class="copy" onclick="copyText('advanced a person is, the greater pleasure he takes in reading')">
-            advanced a person is, the greater pleasure he takes in reading</span>
-        </p>
+<h3>Question 13</h3>
+<p>
+A more advanced person takes greater pleasure in reading.<br>
+→ The more <span class="copy" onclick="copyText('advanced a person is, the greater pleasure he takes in reading')">advanced a person is, the greater pleasure he takes in reading</span>.
+</p>
 
-        <!-- Q14 -->
-        <h3>Question 14</h3>
-        <p>
-            → which 
-            <span class="copy" onclick="copyText('will help you avoid culture shock')">
-            will help you avoid culture shock</span>
-        </p>
+<h3>Question 14</h3>
+<p>
+You should learn about the new culture, which will help you avoid culture shock.
+</p>
 
-        <!-- Q15 -->
-        <h3>Question 15</h3>
-        <p>
-            → has had 
-            <span class="copy" onclick="copyText('this laptop since he was 16 years old')">
-            this laptop since he was 16 years old</span>
-        </p>
+<h3>Question 15</h3>
+<p>
+My brother bought this laptop when he was 16 years old.<br>
+→ My brother has had <span class="copy" onclick="copyText('this laptop since he was 16 years old')">this laptop since he was 16 years old</span>.
+</p>
 
-        <!-- Q16 -->
-        <h3>Question 16</h3>
-        <p>
-            → arrived 
-            <span class="copy" onclick="copyText('at the beach, the festival was over')">
-            at the beach, the festival was over</span>
-        </p>
+<h3>Question 16</h3>
+<p>
+When we arrived at the beach, the festival was over.
+</p>
 
-    </div>
+</div>
+
+<!-- BÀI HỌC -->
+<div id="lessonBox" class="box" style="display:none;">
+    <iframe src="https://scorm.cohota.com/lti/scorm_files/13112"></iframe>
+</div>
+
 </div>
 
 <script>
-    function openLesson() {
-        document.getElementById("lessonBox").style.display = "block";
-        document.getElementById("hintBox").style.display = "none";
-    }
-
-    function showHint() {
-        document.getElementById("lessonBox").style.display = "none";
-        document.getElementById("hintBox").style.display = "block";
-    }
-
-    function copyText(text) {
-        navigator.clipboard.writeText(text);
-        alert("Đã sao chép: " + text);
-    }
-
-    // Mặc định mở gợi ý
-    window.onload = function () {
-        showHint();
-    };
+function copyText(text){
+    navigator.clipboard.writeText(text);
+    alert("Đã sao chép: " + text);
+}
+function showLesson(){
+    document.getElementById("lessonBox").style.display="block";
+    document.getElementById("hintBox").style.display="none";
+}
+function showHint(){
+    document.getElementById("lessonBox").style.display="none";
+    document.getElementById("hintBox").style.display="block";
+}
+window.addEventListener("DOMContentLoaded",()=>showHint());
 </script>
 
 </body>
