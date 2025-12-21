@@ -38,18 +38,21 @@ button{
     color:#000;
 }
 button:hover{background:#0ea5e9;}
-.copy{
+
+.answer{
     color:#38bdf8;
     font-weight:bold;
     cursor:pointer;
 }
-.copy:hover{text-decoration:underline;}
+.answer:hover{text-decoration:underline;}
+
 iframe{
     width:100%;
     height:600px;
     border:none;
     border-radius:12px;
 }
+
 #toast{
     position:fixed;
     bottom:20px;
@@ -70,119 +73,171 @@ iframe{
 <h1>Gợi ý đáp án – Bài tiếng Anh</h1>
 
 <div class="buttons">
-    <button onclick="showHint()">Gợi ý đáp án</button>
-    <button onclick="showLesson()">Mở bài học</button>
+    <button onclick="showHint()">💡 Gợi ý đáp án</button>
+    <button onclick="showLesson()">📘 Mở bài học</button>
 </div>
 
 <div id="hintBox" class="box">
 
-<h3>Gợi ý đáp án – Question 1</h3>
+<h3>Question 1</h3>
 <p>
-In the future, our world is likely to change <b>rapidly</b> as technology and 
-<b>urbanization</b> continue to <b>shape</b> society. While these advancements 
-bring new opportunities, they may also lead to challenges such as rising 
-<b>unemployment</b> in industries replaced by automation. As cities expand and 
-become more densely populated, life could become increasingly <b>stressful</b> 
-for many people. However, with careful planning and innovative <b>solutions</b>, 
-we can aim to create a future where progress benefits everyone while 
-<b>addressing</b> these potential issues.
+In the future, our world is likely to change 
+<span class="answer" onclick="copyText('rapidly')">rapidly</span> 
+as technology and 
+<span class="answer" onclick="copyText('urbanization')">urbanization</span> 
+continue to 
+<span class="answer" onclick="copyText('shape')">shape</span> society. 
+These changes may cause rising 
+<span class="answer" onclick="copyText('unemployment')">unemployment</span>. 
+Life could become increasingly 
+<span class="answer" onclick="copyText('stressful')">stressful</span>, 
+but innovative 
+<span class="answer" onclick="copyText('solutions')">solutions</span> 
+can help in 
+<span class="answer" onclick="copyText('addressing')">addressing</span> 
+these issues.
 </p>
 
-<h3>Gợi ý đáp án – Question 2</h3>
+<h3>Question 2</h3>
 <p>
-We are currently seeking a highly motivated individual to fill an exciting 
-<b>vacant</b> role in our team. As a key member, you will be <b>employed</b> in a 
-dynamic environment where your contributions will be highly valued. The role 
-presents a <b>challenging</b> opportunity for those looking to grow their skills 
-and make a significant impact. Ideally, we <b>prefer</b> candidates with 
-experience in a fast-paced industry. If you are ready to take on this 
-<b>rewarding</b> role, we encourage you to apply today.
+We are seeking a 
+<span class="answer" onclick="copyText('vacant')">vacant</span> position. 
+You will be 
+<span class="answer" onclick="copyText('employed')">employed</span> 
+in a 
+<span class="answer" onclick="copyText('challenging')">challenging</span> 
+environment. We 
+<span class="answer" onclick="copyText('prefer')">prefer</span> 
+candidates ready for a 
+<span class="answer" onclick="copyText('rewarding')">rewarding</span> role.
 </p>
 
-<h3>Gợi ý đáp án – Question 3</h3>
+<h3>Question 3</h3>
 <p>
-We would like to express our deep <b>admiration</b> for the dedication and hard 
-work of all our team members. Our company thrives in a <b>diverse</b> environment, 
-where each individual’s unique skills contribute to our collective success. We 
-are proud to work with a partner who <b>specializes</b> in cutting-edge technology 
-solutions, helping us stay ahead of the curve. As we move forward, we eagerly 
-await exciting new opportunities for <b>growth</b> and innovation.
+We show great 
+<span class="answer" onclick="copyText('admiration')">admiration</span> 
+for our team. Our company values a 
+<span class="answer" onclick="copyText('diverse')">diverse</span> culture and 
+<span class="answer" onclick="copyText('specializes')">specializes</span> 
+in innovation and 
+<span class="answer" onclick="copyText('growth')">growth</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 4</h3>
+<h3>Question 4</h3>
 <p>
-This organization was set <b>up to help the disadvantaged</b>.
+This organization was set 
+<span class="answer" onclick="copyText('up to help the disadvantaged')">
+up to help the disadvantaged
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 5</h3>
+<h3>Question 5</h3>
 <p>
-This is the most <b>interesting film I have ever seen</b>.
+This is the most 
+<span class="answer" onclick="copyText('interesting film I have ever seen')">
+interesting film I have ever seen
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 6</h3>
+<h3>Question 6</h3>
 <p>
-The more <b>work experience you get</b>, the <b>greater chance of employment you 
-will have</b>.
+The more 
+<span class="answer" onclick="copyText('work experience you get')">
+work experience you get
+</span>, the 
+<span class="answer" onclick="copyText('greater chance of employment you will have')">
+greater chance of employment you will have
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 7</h3>
+<h3>Question 7</h3>
 <p>
-Air pollution levels have increased in many countries, which <b>is linked to 
-biodiversity loss</b>.
+Air pollution levels have increased, which 
+<span class="answer" onclick="copyText('is linked to biodiversity loss')">
+is linked to biodiversity loss
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 8</h3>
+<h3>Question 8</h3>
 <p>
-The <b>lazier you are</b>, the <b>worse your grades will get</b>.
+The 
+<span class="answer" onclick="copyText('lazier you are')">lazier you are</span>, 
+the 
+<span class="answer" onclick="copyText('worse your grades will get')">
+worse your grades will get
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 9</h3>
+<h3>Question 9</h3>
 <p>
-The <b>harder we work</b>, the <b>sooner we can finish</b>.
+The 
+<span class="answer" onclick="copyText('harder we work')">harder we work</span>, 
+the 
+<span class="answer" onclick="copyText('sooner we can finish')">
+sooner we can finish
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 10</h3>
+<h3>Question 10</h3>
 <p>
-Mr. Smith has not been seen since <b>he left the house</b>.
+Mr. Smith has not been seen since 
+<span class="answer" onclick="copyText('he left the house')">
+he left the house
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 11</h3>
+<h3>Question 11</h3>
 <p>
-Today, young people from rural areas often move to big cities to look 
-<b>for better job opportunities</b>.
+Young people move to cities to look 
+<span class="answer" onclick="copyText('for better job opportunities')">
+for better job opportunities
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 12</h3>
+<h3>Question 12</h3>
 <p>
-This is the first time I <b>have been in Thailand</b>.
+This is the first time I 
+<span class="answer" onclick="copyText('have been in Thailand')">
+have been in Thailand
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 13</h3>
+<h3>Question 13</h3>
 <p>
-The <b>more advanced a person is</b>, the <b>greater pleasure he takes in 
-reading</b>.
+The 
+<span class="answer" onclick="copyText('more advanced a person is')">
+more advanced a person is
+</span>, the 
+<span class="answer" onclick="copyText('greater pleasure he takes in reading')">
+greater pleasure he takes in reading
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 14</h3>
+<h3>Question 14</h3>
 <p>
-You should learn about the new culture, which <b>will help you avoid culture 
-shock</b>.
+You should learn about the culture, which 
+<span class="answer" onclick="copyText('will help you avoid culture shock')">
+will help you avoid culture shock
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 15</h3>
+<h3>Question 15</h3>
 <p>
-My brother has <b>had this laptop since he was 16 years old</b>.
+My brother has 
+<span class="answer" onclick="copyText('had this laptop since he was 16 years old')">
+had this laptop since he was 16 years old
+</span>.
 </p>
 
-<h3>Gợi ý đáp án – Question 16</h3>
+<h3>Question 16</h3>
 <p>
-When we arrived <b>at the beach</b>, the festival was over.
+When we arrived 
+<span class="answer" onclick="copyText('at the beach')">at the beach</span>, 
+the festival was over.
 </p>
 
 </div>
 
-
-<!-- BÀI HỌC -->
 <div id="lessonBox" class="box" style="display:none;">
     <iframe src="https://scorm.cohota.com/lti/scorm_files/13112"></iframe>
 </div>
