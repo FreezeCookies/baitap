@@ -2,31 +2,128 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Trang học tập</title>
+    <title>Bài học tiếng Anh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
         body {
             margin: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #000;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #020617);
+            color: #fff;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #38bdf8;
+            color: #000;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #0ea5e9;
+            transform: scale(1.05);
+        }
+
+        .box {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
         }
 
         iframe {
             width: 100%;
-            height: 100%;
+            height: 600px;
             border: none;
+            border-radius: 12px;
         }
     </style>
 </head>
 <body>
 
-    <iframe 
-        src="https://scorm.cohota.com/lti/scorm_files/13112"
-        allowfullscreen>
-    </iframe>
+<div class="container">
+    <h1>Bài học tiếng Anh</h1>
+
+    <div class="buttons">
+        <button onclick="openLesson()">📘 Mở bài học</button>
+        <button onclick="showHint()">💡 Gợi ý đáp án</button>
+        <button onclick="showTips()">📝 Mẹo làm bài</button>
+    </div>
+
+    <!-- Bài học -->
+    <div id="lessonBox" class="box">
+        <iframe src="https://scorm.cohota.com/lti/scorm_files/13112"></iframe>
+    </div>
+
+    <!-- Gợi ý -->
+    <div id="hintBox" class="box">
+        <h3>Gợi ý đáp án</h3>
+        <ul>
+            <li>Đọc kỹ câu hỏi, chú ý thì (tense) của động từ.</li>
+            <li>Tìm từ khóa trong câu để loại trừ đáp án sai.</li>
+            <li>Với bài nghe, nghe ý chính trước, không dịch từng từ.</li>
+        </ul>
+    </div>
+
+    <!-- Mẹo -->
+    <div id="tipsBox" class="box">
+        <h3>Mẹo làm bài tiếng Anh</h3>
+        <ul>
+            <li>Không chọn đáp án quá dài nếu không cần thiết.</li>
+            <li>Danh từ số ít → chú ý mạo từ a / an / the.</li>
+            <li>Nếu không chắc, loại trừ trước rồi chọn đáp án hợp lý nhất.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function hideAll() {
+        document.getElementById("lessonBox").style.display = "none";
+        document.getElementById("hintBox").style.display = "none";
+        document.getElementById("tipsBox").style.display = "none";
+    }
+
+    function openLesson() {
+        hideAll();
+        document.getElementById("lessonBox").style.display = "block";
+    }
+
+    function showHint() {
+        hideAll();
+        document.getElementById("hintBox").style.display = "block";
+    }
+
+    function showTips() {
+        hideAll();
+        document.getElementById("tipsBox").style.display = "block";
+    }
+</script>
 
 </body>
 </html>
