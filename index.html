@@ -33,7 +33,7 @@
         }
 
         button {
-            padding: 12px 20px;
+            padding: 12px 22px;
             border: none;
             border-radius: 10px;
             font-size: 15px;
@@ -53,7 +53,6 @@
             background: rgba(255,255,255,0.08);
             border-radius: 12px;
             padding: 20px;
-            margin-bottom: 20px;
             display: none;
         }
 
@@ -62,6 +61,19 @@
             height: 600px;
             border: none;
             border-radius: 12px;
+        }
+
+        .copy {
+            color: #38bdf8;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+        .copy:hover {
+            background: rgba(56,189,248,0.2);
         }
     </style>
 </head>
@@ -73,7 +85,6 @@
     <div class="buttons">
         <button onclick="openLesson()">📘 Mở bài học</button>
         <button onclick="showHint()">💡 Gợi ý đáp án</button>
-        <button onclick="showTips()">📝 Mẹo làm bài</button>
     </div>
 
     <!-- Bài học -->
@@ -81,24 +92,26 @@
         <iframe src="https://scorm.cohota.com/lti/scorm_files/13112"></iframe>
     </div>
 
-    <!-- Gợi ý -->
+    <!-- Gợi ý đáp án -->
     <div id="hintBox" class="box">
-        <h3>Gợi ý đáp án</h3>
-        <ul>
-            <li>Đọc kỹ câu hỏi, chú ý thì (tense) của động từ.</li>
-            <li>Tìm từ khóa trong câu để loại trừ đáp án sai.</li>
-            <li>Với bài nghe, nghe ý chính trước, không dịch từng từ.</li>
-        </ul>
-    </div>
-
-    <!-- Mẹo -->
-    <div id="tipsBox" class="box">
-        <h3>Mẹo làm bài tiếng Anh</h3>
-        <ul>
-            <li>Không chọn đáp án quá dài nếu không cần thiết.</li>
-            <li>Danh từ số ít → chú ý mạo từ a / an / the.</li>
-            <li>Nếu không chắc, loại trừ trước rồi chọn đáp án hợp lý nhất.</li>
-        </ul>
+        <h3>Gợi ý đáp án – Question 1</h3>
+        <p>
+            In the future, our world is likely to change 
+            <span class="copy" onclick="copyText('rapidly')">rapidly</span> 
+            as technology and 
+            <span class="copy" onclick="copyText('urbanization')">urbanization</span> 
+            continue to shape society. While these advancements bring new opportunities, 
+            they may also lead to challenges such as rising 
+            <span class="copy" onclick="copyText('unemployment')">unemployment</span> 
+            in industries replaced by automation. As cities expand and become more densely populated, 
+            life could become increasingly 
+            <span class="copy" onclick="copyText('stressful')">stressful</span> 
+            for many people. However, with careful planning and innovative 
+            <span class="copy" onclick="copyText('solutions')">solutions</span>, 
+            we can aim to create a future where progress benefits everyone while 
+            <span class="copy" onclick="copyText('addressing')">addressing</span> 
+            these potential issues.
+        </p>
     </div>
 </div>
 
@@ -106,7 +119,6 @@
     function hideAll() {
         document.getElementById("lessonBox").style.display = "none";
         document.getElementById("hintBox").style.display = "none";
-        document.getElementById("tipsBox").style.display = "none";
     }
 
     function openLesson() {
@@ -119,9 +131,10 @@
         document.getElementById("hintBox").style.display = "block";
     }
 
-    function showTips() {
-        hideAll();
-        document.getElementById("tipsBox").style.display = "block";
+    function copyText(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Đã sao chép: " + text);
+        });
     }
 </script>
 
