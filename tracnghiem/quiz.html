@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trắc nghiệm Tùy Chỉnh</title>
+  <style>
+    /* Copy toàn bộ style từ code quiz trước đó của tao (ở tin nhắn trước) */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background: #4361ee;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 2.1rem;
+    }
+    .controls {
+      text-align: center;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+    .toggle-btn {
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: #4361ee;
+      color: white;
+      margin: 0 10px;
+    }
+    .toggle-btn.active {
+      background: #2ecc71;
+      font-weight: bold;
+    }
+    .content {
+      padding: 30px;
+    }
+    .question {
+      margin-bottom: 32px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      border-left: 5px solid #4361ee;
+    }
+    .question h3 {
+      margin: 0 0 16px 0;
+      color: #2f3542;
+      font-size: 1.25rem;
+    }
+    .options label {
+      display: block;
+      margin: 12px 0;
+      padding: 12px 16px;
+      background: white;
+      border: 2px solid #dfe6e9;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .options label:hover {
+      background: #f1f3f5;
+      border-color: #a29bfe;
+    }
+    .options input[type="radio"] {
+      margin-right: 12px;
+    }
+    .correct-selected {
+      background: #d4edda !important;
+      border-color: #28a745 !important;
+      font-weight: bold;
+    }
+    .wrong-selected {
+      background: #f8d7da !important;
+      border-color: #dc3545 !important;
+    }
+    .submit-btn {
+      display: block;
+      width: 220px;
+      margin: 40px auto;
+      padding: 16px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: white;
+      background: #e74c3c;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .submit-btn:hover {
+      background: #c0392b;
+      transform: translateY(-3px);
+    }
+    #result {
+      margin-top: 40px;
+      padding: 30px;
+      border-radius: 12px;
+      color: white;
+      font-size: 1.4rem;
+      text-align: center;
+      display: none;
+    }
+    .detail {
+      max-width: 700px;
+      margin: 20px auto;
+      text-align: left;
+      background: rgba(255,255,255,0.2);
+      padding: 20px;
+      border-radius: 12px;
+      line-height: 1.8;
+    }
+    .status {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Trắc nghiệm Tùy Chỉnh</h1>
+    <p id="quiz-title">Số câu hỏi: 0</p>
+  </div>
+
+  <div class="controls">
+    <p class="status" id="status">Đang ở chế độ: Giữ nguyên thứ tự (3 lần đầu)</p>
+    <button class="toggle-btn" id="fixedBtn">Giữ nguyên thứ tự</button>
+    <button class="toggle-btn" id="randomBtn">Xáo trộn đề</button>
+  </div>
+
+  <div class="content" id="quiz">
+    <!-- Câu hỏi sẽ được JS inject -->
+  </div>
+
+  <button class="submit-btn" onclick="submitQuiz()">NỘP BÀI</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+// Hàm xáo trộn
+function shuffle(array) {
+  let arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Đọc data từ URL
+let originalQuestions = [];
+const params = new URLSearchParams(window.location.search);
+const encodedData = params.get('data');
+if (encodedData) {
+  try {
+    const data = decodeURIComponent(escape(atob(encodedData))); // Decode base64
+    originalQuestions = JSON.parse(data);
+    document.getElementById('quiz-title').textContent = `Số câu hỏi: ${originalQuestions.length}`;
+  } catch (e) {
+    alert('Link không hợp lệ hoặc data lỗi!');
+  }
+} else {
+  alert('Không có data đề thi! Hãy tạo từ builder.html');
+}
+
+// Lấy số lần truy cập (cho chế độ random/fixed)
+let visitCount = parseInt(localStorage.getItem('quizVisit') || '0') + 1;
+localStorage.setItem('quizVisit', visitCount);
+
+// Chế độ từ localStorage
+let mode = localStorage.getItem('quizMode') || 'fixed';
+if (visitCount <= 3 && mode !== 'random') {
+  mode = 'fixed';
+}
+
+let currentQuestions = mode === 'random' ? shuffle(originalQuestions) : [...originalQuestions];
+
+// Render câu hỏi
+const quizDiv = document.getElementById("quiz");
+currentQuestions.forEach((item, index) => {
+  const qNum = index + 1;
+  const questionDiv = document.createElement("div");
+  questionDiv.className = "question";
+  questionDiv.innerHTML = `
+    <h3>Câu ${qNum}: ${item.q}</h3>
+    <div class="options">
+      ${item.options.map(opt => `
+        <label>
+          <input type="radio" name="q${qNum}" value="${opt}">
+          ${opt}
+        </label>
+      `).join('')}
+    </div>
+  `;
+  quizDiv.appendChild(questionDiv);
+});
+
+// Cập nhật trạng thái và nút
+const statusEl = document.getElementById("status");
+const fixedBtn = document.getElementById("fixedBtn");
+const randomBtn = document.getElementById("randomBtn");
+
+function updateMode(newMode) {
+  mode = newMode;
+  localStorage.setItem('quizMode', mode);
+  statusEl.textContent = mode === 'random' ? "Đang ở chế độ: Xáo trộn đề" : "Đang ở chế độ: Giữ nguyên thứ tự";
+  fixedBtn.classList.toggle("active", mode === 'fixed');
+  randomBtn.classList.toggle("active", mode === 'random');
+}
+
+updateMode(mode);
+
+fixedBtn.onclick = () => {
+  if (mode !== 'fixed') {
+    updateMode('fixed');
+    alert("Lần sau reload trang sẽ giữ nguyên thứ tự!");
+  }
+};
+
+randomBtn.onclick = () => {
+  if (mode !== 'random') {
+    updateMode('random');
+    alert("Lần sau reload trang sẽ xáo trộn đề!");
+  }
+};
+
+// Hàm chấm bài (giống trước)
+function submitQuiz() {
+  let score = 0;
+  let resultHTML = `<h2 style="text-align:center;">KẾT QUẢ BÀI LÀM</h2><div class="detail">`;
+
+  currentQuestions.forEach((item, index) => {
+    const qNum = index + 1;
+    const selected = document.querySelector(`input[name="q${qNum}"]:checked`);
+    const userAnswer = selected ? selected.value : null;
+    const correctAnswer = item.correct;
+
+    document.querySelectorAll(`.question:nth-child(${qNum}) .options label`).forEach(label => {
+      label.classList.remove("correct-selected", "wrong-selected");
+    });
+
+    if (userAnswer === correctAnswer) {
+      score++;
+      resultHTML += `<p style="color:#d4edda;">Câu ${qNum}: Đúng ✓</p>`;
+      if (selected) selected.parentElement.classList.add("correct-selected");
+    } else {
+      if (selected) selected.parentElement.classList.add("wrong-selected");
+      const correctRadio = document.querySelector(`input[name="q${qNum}"][value="${correctAnswer}"]`);
+      if (correctRadio) {
+        correctRadio.checked = true;
+        correctRadio.parentElement.classList.add("correct-selected");
+      }
+      resultHTML += `<p style="color:#f8d7da;">Câu ${qNum}: Sai ✗<br>→ Đáp án đúng là: <strong>${correctAnswer}</strong></p>`;
+    }
+  });
+
+  resultHTML += `</div><h2 style="margin-top:40px;">Tổng điểm: ${score}/${currentQuestions.length}</h2>`;
+  if (score === currentQuestions.length) resultHTML += "<p>Full điểm thần thánh! 🔥🔥</p>";
+  else if (score >= currentQuestions.length * 0.8) resultHTML += "<p>Pro vãi bro! 👑</p>";
+  else if (score >= currentQuestions.length * 0.6) resultHTML += "<p>Khá tốt rồi, tiếp tục phát huy! 👍</p>";
+  else resultHTML += "<p>Cố lên lần sau nha! 💪</p>";
+
+  document.getElementById("result").innerHTML = resultHTML;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").style.background = score >= currentQuestions.length * 0.8 ? "#2ecc71" : score >= currentQuestions.length * 0.6 ? "#f39c12" : "#e74c3c";
+
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+}
+</script>
+</body>
+</html>
