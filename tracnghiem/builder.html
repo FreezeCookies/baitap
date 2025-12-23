@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tạo Đề Trắc Nghiệm</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; background: #f4f4f4; }
+    h1 { text-align: center; }
+    form { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .question-form { margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 20px; }
+    input, select, textarea { width: 100%; margin: 10px 0; padding: 8px; box-sizing: border-box; }
+    button { padding: 10px 20px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+    button:hover { background: #45a049; }
+    #link-output { margin-top: 20px; padding: 15px; background: #e7f3ff; border: 1px solid #b3d4fc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Tạo Đề Trắc Nghiệm Mới</h1>
+  <form id="quiz-form">
+    <label for="num-questions">Số lượng câu hỏi:</label>
+    <input type="number" id="num-questions" min="1" value="25" required>
+    <button type="button" onclick="generateForms()">Tạo form nhập</button>
+    <div id="questions-container"></div>
+    <button type="button" onclick="generateQuizLink()">Tạo đề thi và lấy link</button>
+  </form>
+  <div id="link-output"></div>
+
+  <script>
+    function generateForms() {
+      const num = parseInt(document.getElementById('num-questions').value);
+      const container = document.getElementById('questions-container');
+      container.innerHTML = '';
+      for (let i = 1; i <= num; i++) {
+        const div = document.createElement('div');
+        div.className = 'question-form';
+        div.innerHTML = `
+          <h3>Câu ${i}</h3>
+          <label>Nội dung câu hỏi:</label>
+          <textarea id="q${i}-text" required></textarea>
+          <label>Đáp án 1:</label><input type="text" id="q${i}-opt1" required>
+          <label>Đáp án 2:</label><input type="text" id="q${i}-opt2" required>
+          <label>Đáp án 3:</label><input type="text" id="q${i}-opt3" required>
+          <label>Đáp án 4:</label><input type="text" id="q${i}-opt4" required>
+          <label>Chọn đáp án đúng:</label>
+          <select id="q${i}-correct" required>
+            <option value="">Chọn</option>
+            <option value="0">Đáp án 1</option>
+            <option value="1">Đáp án 2</option>
+            <option value="2">Đáp án 3</option>
+            <option value="3">Đáp án 4</option>
+          </select>
+        `;
+        container.appendChild(div);
+      }
+    }
+
+    function generateQuizLink() {
+      const num = parseInt(document.getElementById('num-questions').value);
+      const questions = [];
+      for (let i = 1; i <= num; i++) {
+        const qText = document.getElementById(`q${i}-text`).value.trim();
+        const opts = [
+          document.getElementById(`q${i}-opt1`).value.trim(),
+          document.getElementById(`q${i}-opt2`).value.trim(),
+          document.getElementById(`q${i}-opt3`).value.trim(),
+          document.getElementById(`q${i}-opt4`).value.trim()
+        ];
+        const correctIdx = parseInt(document.getElementById(`q${i}-correct`).value);
+        if (!qText || opts.some(opt => !opt) || isNaN(correctIdx)) {
+          alert(`Câu ${i} chưa đầy đủ!`);
+          return;
+        }
+        questions.push({ q: qText, options: opts, correct: opts[correctIdx] });
+      }
+      const data = JSON.stringify(questions);
+      const encoded = btoa(unescape(encodeURIComponent(data))); // Encode base64 an toàn
+      const link = `quiz.html?data=${encoded}`;
+      document.getElementById('link-output').innerHTML = `
+        <p>Link đề thi mới: <a href="${link}" target="_blank">${window.location.origin}/${link}</a></p>
+        <p>Copy link: <code>${window.location.origin}/${link}</code></p>
+      `;
+    }
+  </script>
+</body>
+</html>
